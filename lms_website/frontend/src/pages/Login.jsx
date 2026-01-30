@@ -4,9 +4,11 @@ import google from "../assets/google.jpg";
 import { IoEyeOutline } from "react-icons/io5";
 import { IoEye } from "react-icons/io5";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
   return (
     <div className="bg-[#dddbdb] w-screen h-screen flex items-center justify-center">
       <form className="w-[90%] md:w-[800px] h-[500px] bg-white shadow-xl rounded-2xl flex">
@@ -63,6 +65,15 @@ function Login() {
           <div className="w-[80%] h-[40px] border-2 border-[black] rounded-[5px] flex items-center justify-center">
             <img src={google} alt="google" className="w-[25px]" />
             <span className="text-[18px] text-grey-500">Google</span>
+          </div>
+          <div className="text-[#6f6f6f]">
+            Don't have an account?
+            <span
+              className="underline underline-offset-1 text-[black] cursor-pointer hover:text-[blue]"
+              onClick={() => navigate("/signup")}
+            >
+              SignUp
+            </span>
           </div>
         </div>
 

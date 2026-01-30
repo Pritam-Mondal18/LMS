@@ -1,95 +1,113 @@
-import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { IoEyeOutline, IoEye } from "react-icons/io5";
 import logo from "../assets/logo.jpg";
 import google from "../assets/google.jpg";
-import { IoEyeOutline } from "react-icons/io5";
-import { IoEye } from "react-icons/io5";
-import { useState } from "react";
 
 function SignUp() {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+
   return (
-    <div className="bg-[#dddbdb] w-screen h-screen flex items-center justify-center">
-      <form className="w-[90%] md:w-[800px] h-[500px] bg-white shadow-xl rounded-2xl flex">
+    <div className="bg-[#dddbdb] min-h-screen flex items-center justify-center py-10">
+      {/* CARD */}
+      <form
+        className="
+          w-[92%]
+          max-w-[900px]
+          bg-white
+          shadow-2xl
+          rounded-2xl
+          flex
+          overflow-hidden
+        "
+      >
         {/* LEFT */}
-        <div className="p-1.5 md:w-1/2 w-full h-full flex flex-col items-center justify-center gap-4">
+        <div className="md:w-1/2 w-full flex flex-col items-center justify-center gap-4 px-6 py-10">
           <div className="text-center">
             <h1 className="font-semibold text-black text-2xl">
               Let's get started
             </h1>
-            <h2 className="text-[#999797] text-[18px]">Create your account</h2>
+            <p className="text-[#8a8a8a] text-[16px]">Create your account</p>
           </div>
 
-          <div className="flex flex-col gap-1 w-[80%]">
-            <label htmlFor="name" className="font-semibold">
-              Name
-            </label>
+          <div className="flex flex-col gap-1 w-[85%]">
+            <label className="font-medium">Name</label>
             <input
-              id="name"
               type="text"
               placeholder="Your Name"
-              className="border border-[#e7e6e6] h-[40px] px-4 rounded-md outline-none focus:border-black"
+              className="border border-[#e6e6e6] h-[42px] px-4 rounded-md outline-none focus:border-black"
             />
           </div>
-          <div className="flex flex-col gap-1 w-[80%]">
-            <label htmlFor="email" className="font-semibold">
-              Email
-            </label>
+
+          <div className="flex flex-col gap-1 w-[85%]">
+            <label className="font-medium">Email</label>
             <input
-              id="email"
               type="email"
               placeholder="Your Email"
-              className="border border-[#e7e6e6] h-[40px] px-4 rounded-md outline-none focus:border-black"
+              className="border border-[#e6e6e6] h-[42px] px-4 rounded-md outline-none focus:border-black"
             />
           </div>
-          <div className="flex flex-col gap-1 w-[80%] relative">
-            <label htmlFor="password" className="font-semibold">
-              Password
-            </label>
+
+          <div className="flex flex-col gap-1 w-[85%] relative">
+            <label className="font-medium">Password</label>
             <input
-              id="password"
               type={show ? "text" : "password"}
               placeholder="Your Password"
-              className="border border-[#e7e6e6] h-[40px] px-4 rounded-md outline-none focus:border-black"
+              className="border border-[#e6e6e6] h-[42px] px-4 rounded-md outline-none focus:border-black"
             />
+
             {!show ? (
               <IoEyeOutline
-                className="absolute w-[20px] h-[20px] cursor-pointer right-[5%] bottom-[10%]"
-                onClick={() => setShow((prev) => !prev)}
+                className="absolute right-4 bottom-3 text-xl cursor-pointer"
+                onClick={() => setShow(!show)}
               />
             ) : (
               <IoEye
-                className="absolute w-[20px] h-[20px] cursor-pointer right-[5%] bottom-[10%]"
-                onClick={() => setShow((prev) => !prev)}
+                className="absolute right-4 bottom-3 text-xl cursor-pointer"
+                onClick={() => setShow(!show)}
               />
             )}
           </div>
-          <div className="flex md:w-[50%] w-[70%] items-center justify-between">
-            <span className="px-[10px] py-[5px] border-[2px] border-[#e7e6e6] rounded-2xl cursor-pointer hover:border-black">
+
+          <div className="flex w-[85%] justify-between">
+            <span className="px-5 py-1.5 border-2 border-[#e6e6e6] rounded-full cursor-pointer hover:border-black">
               Student
             </span>
-            <span className="px-[10px] py-[5px] border-[2px] border-[#e7e6e6] rounded-2xl cursor-pointer hover:border-black">
+            <span className="px-5 py-1.5 border-2 border-[#e6e6e6] rounded-full cursor-pointer hover:border-black">
               Educator
             </span>
           </div>
-          <button className="w-[80%] h-[40px] bg-black text-white cursor-pointer flex items-center justify-center rounded-[5px]">
+
+          <button className="w-[85%] h-[44px] bg-black text-white rounded-md">
             SignUp
           </button>
-          <div className="w-[80%] flex items-center gap-5">
-            <div className="w-[25%] h-[0.5px] bg-[#c4c4c4]"></div>
-            <div className="w-[50%] text-[15px] text-[#6f6f6f] flex items-center justify-center">
-              or countinue
-            </div>
-            <div className="w-[25%] h-[0.5px] bg-[#c4c4c4]"></div>
+
+          <div className="w-[85%] flex items-center gap-3">
+            <div className="flex-1 h-[1px] bg-[#d0d0d0]" />
+            <span className="text-[14px] text-[#777]">or continue</span>
+            <div className="flex-1 h-[1px] bg-[#d0d0d0]" />
           </div>
-          <div className="w-[80%] h-[40px] border-2 border-[black] rounded-[5px] flex items-center justify-center">
-            <img src={google} alt="google" className="w-[25px]" />
-            <span className="text-[18px] text-grey-500">Google</span>
+
+          <div className="w-[85%] h-[44px] border-2 border-black rounded-md flex items-center justify-center gap-3">
+            <img src={google} alt="google" className="w-5" />
+            <span>Google</span>
+          </div>
+
+          <div className="text-[#6f6f6f] text-sm">
+            Already have an account?{" "}
+            <span
+              className="underline cursor-pointer text-black"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </span>
           </div>
         </div>
 
         {/* RIGHT */}
-        <div className="w-1/2 h-full rounded-r-2xl bg-black md:flex hidden items-center justify-center flex-col gap-3">
-          <img src={logo} alt="logo" className="w-28 shadow-2xl" />
+        <div className="md:w-1/2 hidden md:flex bg-black items-center justify-center flex-col gap-6 py-10">
+          <img src={logo} alt="logo" className="w-32" />
           <span className="text-white text-2xl font-semibold">
             VIRTUAL COURSES
           </span>
