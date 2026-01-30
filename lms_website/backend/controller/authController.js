@@ -1,4 +1,6 @@
-import User from "../model/userModel";
+// import User from "../model/userModel";
+import User from "../model/userModel.js";
+
 import validator from "validator";
 import bcrypt from "bcryptjs";
 
@@ -25,7 +27,7 @@ export const signUp = async (req, res) => {
       role,
     });
     let token = await genToken(user._id);
-    req.cookie("token", token, {
+    res.cookie("token", token, {
       httpOnly: true,
       secure: false,
       sameSite: "Strict",
@@ -49,7 +51,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
     let token = await genToken(user._id);
-    req.cookie("token", token, {
+    res.cookie("token", token, {
       httpOnly: true,
       secure: false,
       sameSite: "Strict",
@@ -61,7 +63,7 @@ export const login = async (req, res) => {
   }
 };
 
-const logout = async (req, res) => {
+export const logOut = async (req, res) => {
   try {
     await res.clearCookie("token");
     return res.status(200).json({ message: "Logout successful" });
