@@ -3,10 +3,6 @@ import validator from "validator";
 import bcrypt from "bcryptjs";
 import genToken from "../config/token.js";
 
-// const genToken = (id) => {
-//   return id;
-// };
-
 export const signUp = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
